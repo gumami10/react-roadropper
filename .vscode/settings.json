@@ -1,0 +1,11 @@
+{
+   "typescriptHero.imports.organizeOnSave": true,
+   "typescript.tsdk": "node_modules/typescript/lib",
+   "typescriptHero.imports.ignoredFromRemoval": [
+      "react",
+      "settings"
+   ],
+   "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+   },
+}
