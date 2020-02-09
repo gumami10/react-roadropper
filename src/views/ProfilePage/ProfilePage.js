@@ -14,7 +14,6 @@ import studio4 from 'assets/img/examples/studio-4.jpg';
 import studio5 from 'assets/img/examples/studio-5.jpg';
 import styles from 'assets/jss/material-kit-react/views/profilePage.js';
 import classNames from 'classnames';
-import Button from 'components/CustomButtons/Button.js';
 import Footer from 'components/Footer/Footer.js';
 import GridContainer from 'components/Grid/GridContainer.js';
 import GridItem from 'components/Grid/GridItem.js';
@@ -22,7 +21,7 @@ import Header from 'components/Header/Header.js';
 import HeaderLinks from 'components/Header/HeaderLinks.js';
 import NavPills from 'components/NavPills/NavPills.js';
 import Parallax from 'components/Parallax/Parallax.js';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useObservable } from 'react-use-observable';
 import userService from 'services/UserService';
 
@@ -65,15 +64,6 @@ export default function ProfilePage(props) {
                   <div className={classes.name}>
                     <h3 className={classes.title}>{state.user.username}</h3>
                     <h6>DESIGNER</h6>
-                    <Button justIcon link className={classes.margin5}>
-                      <i className={'fab fa-twitter'} />
-                    </Button>
-                    <Button justIcon link className={classes.margin5}>
-                      <i className={'fab fa-instagram'} />
-                    </Button>
-                    <Button justIcon link className={classes.margin5}>
-                      <i className={'fab fa-facebook'} />
-                    </Button>
                   </div>
                 </div>
               </GridItem>

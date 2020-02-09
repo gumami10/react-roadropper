@@ -80,7 +80,6 @@ export default function LoginPage(props) {
     console.log('Aconteceu algo');
     await userService.login({ email, password });
     if (state.token) {
-      console.log('aldair');
       props.history.push('/dash');
     }
   };
@@ -90,8 +89,6 @@ export default function LoginPage(props) {
   }
 
   const { ...rest } = props;
-
-  console.log('Aldair Ninja', state);
 
   return (
     <div>
