@@ -38,15 +38,15 @@ export default function ProfilePage(props) {
   const { ...rest } = props;
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
 
-  useEffect(() => props.history.push('/dash'), []);
-  if (state) {
+  if (!state) {
     return null;
   }
+  console.log(state);
   return (
     <div>
       <Header
         color="transparent"
-        brand="Material Kit React"
+        brand="RoadRopper"
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{
@@ -63,7 +63,7 @@ export default function ProfilePage(props) {
               <GridItem xs={12} sm={12} md={6}>
                 <div className={classes.profile}>
                   <div className={classes.name}>
-                    <h3 className={classes.title}>{state.user.email}</h3>
+                    <h3 className={classes.title}>{state.user.username}</h3>
                     <h6>DESIGNER</h6>
                     <Button justIcon link className={classes.margin5}>
                       <i className={'fab fa-twitter'} />

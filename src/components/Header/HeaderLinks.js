@@ -57,7 +57,7 @@ export default function HeaderLinks(props) {
               classes={{ tooltip: classes.tooltip }}
             >
               <Link
-                to="/login-page"
+                to="/login"
                 color="primary"
                 className={classes.navLink}
               >

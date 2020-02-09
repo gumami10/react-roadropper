@@ -16,7 +16,7 @@ ReactDOM.render(
   <Router history={hist}>
     <Switch>
       <Route path="/dash" component={ProfilePage} />
-      <Route path="/login-page" component={LoginPage} />
+      <Route path="/login" component={LoginPage} />
       <Route path="/components" component={Components} />
       <Route path="/" component={LandingPage} />
     </Switch>

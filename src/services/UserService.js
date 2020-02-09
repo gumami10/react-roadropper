@@ -1,4 +1,5 @@
 import axios from 'axios';
+import api from 'services/Api';
 
 import storage from './localStorageService';
 import { store } from './store';
@@ -7,7 +8,8 @@ class UserService {
   initialState = {
     user: null,
     loading: false,
-    token: null
+    token: null,
+    description: ''
   };
 
   constructor() {
@@ -18,31 +20,21 @@ class UserService {
     if (token) {
       this.setState(token);
     }
+    const name = storage.getItem('name');
+    this.setState({ user: { name } });
   }
 
   login = async user => {
-    this.setState({
-      loading: true
-    });
-
     try {
-      const response = await axios.post('http://localhost:3333/users/login', {
-        email: user.email,
-        password: user.password
-      });
-      this.setState({
-        token: response.data.token,
-        name: response.data.name
-      });
-      storage.setItem('token', response.data.token);
-      storage.setItem('name', response.data.token);
-    } catch {
-      console.log('erro');
+      api
+        .post('/users/login', {
+          email: user.email,
+          password: user.password
+        })
+        .subscribe(res => this.setState({ token: res.token, user: res.user }));
+    } catch (e) {
+      console.log('erro', e);
     }
-
-    this.setState({
-      loading: false
-    });
   };
 
   createUser = async user => {

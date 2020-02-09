@@ -76,8 +76,9 @@ export default function LoginPage(props) {
     userService.createUser({ username, email, password });
   };
 
-  const handleClickLogin = () => {
-    userService.login({ email, password });
+  const handleClickLogin = async () => {
+    console.log('Aconteceu algo');
+    await userService.login({ email, password });
     if (state.token) {
       console.log('aldair');
       props.history.push('/dash');
@@ -89,9 +90,12 @@ export default function LoginPage(props) {
   }
 
   const { ...rest } = props;
+
+  console.log('Aldair Ninja', state);
+
   return (
     <div>
-      <Header absolute color="transparent" brand="Material Kit React" rightLinks={<HeaderLinks />} {...rest} />
+      <Header absolute color="transparent" brand="RoadRopper" rightLinks={<HeaderLinks />} {...rest} />
       <div
         className={classes.pageHeader}
         style={{
