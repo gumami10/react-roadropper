@@ -7,9 +7,9 @@ const profilePageStyle = {
     color: '#ffffff'
   },
   button: {
-    width: '50%',
+    width: 'calc(100% - 16px)',
     backgroundColor: '#99b6f2',
-    marginBottom: 12,
+    margin: '0 8px 12px 8px',
     '&:hover': {
       backgroundColor: '#466bb9'
     }

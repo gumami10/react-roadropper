@@ -17,9 +17,8 @@ import GridItem from 'components/Grid/GridItem.js';
 import Header from 'components/Header/Header.js';
 import HeaderLinks from 'components/Header/HeaderLinks.js';
 import PropTypes from 'prop-types';
-import React from 'react';
-import { useObservable } from 'react-use-observable';
-import userService from 'services/UserService';
+import React, { useCallback, useState } from 'react';
+import userService from 'services/userService';
 
 // @material-ui/core components
 // @material-ui/icons
@@ -57,36 +56,30 @@ const a11yProps = index => {
 };
 
 export default function LoginPage(props) {
-  const [state] = useObservable(() => userService.getState());
-  const [cardAnimaton, setCardAnimation] = React.useState('cardHidden');
+  const [cardAnimaton, setCardAnimation] = useState('cardHidden');
   setTimeout(function() {
     setCardAnimation('');
   }, 700);
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-  const [username, setUsername] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
 
-  const handleChange = (_, newValue) => {
+  const classes = useStyles();
+
+  const [value, setValue] = useState(0);
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleClickRegister = useCallback(() => {
+    // eslint-disable-next-line react/prop-types
+    userService.register({ username, email, password }).subscribe(() => props.history.push('/'));
+  }, [username, email, password, props]);
+
+  const handleClickLogin = useCallback(() => {
+    userService.login({ email, password }).subscribe(() => props.history.push('/'));
+  }, [email, password, props]);
+
+  const handleChangeTab = (_, newValue) => {
     setValue(newValue);
   };
-
-  const handleClickRegister = () => {
-    userService.createUser({ username, email, password });
-  };
-
-  const handleClickLogin = async () => {
-    console.log('Aconteceu algo');
-    await userService.login({ email, password });
-    if (state.token) {
-      props.history.push('/dash');
-    }
-  };
-
-  if (!state) {
-    return null;
-  }
 
   const { ...rest } = props;
 
@@ -107,9 +100,9 @@ export default function LoginPage(props) {
               <Card className={classes[cardAnimaton]}>
                 <form className={classes.form}>
                   <CardHeader color="primary" className={classes.cardHeader}>
-                    <Tabs value={value} indicatorColor="transparent" onChange={handleChange}>
-                      <Tab disabled={state.loading} label="Login" {...a11yProps(0)} />
-                      <Tab disabled={state.loading} label="Register" {...a11yProps(1)} />
+                    <Tabs value={value} indicatorColor="transparent" onChange={handleChangeTab}>
+                      <Tab label="Login" {...a11yProps(0)} />
+                      <Tab label="Register" {...a11yProps(1)} />
                     </Tabs>
                   </CardHeader>
                   <TabPanel value={value} index={0}>
@@ -149,7 +142,7 @@ export default function LoginPage(props) {
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                      <Button disabled={state.loading} simple color="primary" size="lg" onClick={() => handleClickLogin()}>
+                      <Button simple color="primary" size="lg" onClick={handleClickLogin}>
                         Sign in
                       </Button>
                     </CardFooter>
@@ -207,7 +200,7 @@ export default function LoginPage(props) {
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                      <Button disabled={state.loading} simple color="primary" size="lg" onClick={() => handleClickRegister()}>
+                      <Button simple color="primary" size="lg" onClick={handleClickRegister}>
                         Sign up
                       </Button>
                     </CardFooter>

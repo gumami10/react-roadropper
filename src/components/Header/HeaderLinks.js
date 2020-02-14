@@ -10,7 +10,7 @@ import CustomDropdown from 'components/CustomDropdown/CustomDropdown.js';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useObservable } from 'react-use-observable';
-import userService from 'services/UserService';
+import userService from 'services/userService';
 
 // react components for routing our app without refresh
 // @material-ui/core components
@@ -18,61 +18,54 @@ import userService from 'services/UserService';
 // core components
 const useStyles = makeStyles(styles);
 
-export default function HeaderLinks(props) {
-  const [state] = useObservable(() => userService.getState(), [])
+export default function HeaderLinks() {
+  const [user] = useObservable(() => userService.getUser());
   const classes = useStyles();
 
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
-        { state && state.user 
+        { user
           ? 
           <CustomDropdown
             noLiPadding
-            buttonText="Aldair, o Grandioso"
+            buttonText={user.username}
             buttonProps={{
               className: classes.navLink,
               color: "transparent"
             }}
             buttonIcon={Person}
             dropdownList={[
-              <Link to="/" className={classes.dropdownLink}>
+              <Link to="/new"
+              className={classes.dropdownLink}
+              >
                 Publique seu roadrop
               </Link>,
-              <a
-                href="https://creativetimofficial.github.io/material-kit-react/#/documentation?ref=mkr-navbar"
-                target="_blank"
-                className={classes.dropdownLink}
+              <Link to="/dash"
+              className={classes.dropdownLink}
               >
-                Acompanhe o seu progresso
-              </a>
+                Acompanhe seu progresso
+              </Link>,
+              <Link to="/"
+              className={classes.dropdownLink}
+              >
+                Busque por Roadmaps
+              </Link>
             ]}
           />
           :
           <ListItem className={classes.listItem}>
-            <Tooltip
-              id="instagram-twitter"
-              title="Follow us on twitter"
-              placement={window.innerWidth > 959 ? "top" : "left"}
-              classes={{ tooltip: classes.tooltip }}
+            <Link
+              to="/login"
+              color="primary"
+              className={classes.navLink}
             >
-              <Link
-                to="/login"
-                color="primary"
-                className={classes.navLink}
-              >
-                Logar
-              </Link>
-            </Tooltip>
+              Logar
+            </Link>
           </ListItem>
         }
       </ListItem>
       <ListItem className={classes.listItem}>
-        {/*<Tooltip title="Delete">
-          <IconButton aria-label="Delete">
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>*/}
         <Tooltip
           id="instagram-twitter"
           title="Follow us on twitter"

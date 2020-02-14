@@ -23,7 +23,7 @@ import NavPills from 'components/NavPills/NavPills.js';
 import Parallax from 'components/Parallax/Parallax.js';
 import React from 'react';
 import { useObservable } from 'react-use-observable';
-import userService from 'services/UserService';
+import userService from 'services/userService';
 
 // nodejs library that concatenates classes
 // @material-ui/core components
@@ -32,15 +32,12 @@ import userService from 'services/UserService';
 const useStyles = makeStyles(styles);
 
 export default function ProfilePage(props) {
-  const [state] = useObservable(() => userService.getState());
+  const [user] = useObservable(() => userService.getUser());
+
   const classes = useStyles();
   const { ...rest } = props;
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
 
-  if (!state) {
-    return null;
-  }
-  console.log(state);
   return (
     <div>
       <Header
@@ -62,7 +59,7 @@ export default function ProfilePage(props) {
               <GridItem xs={12} sm={12} md={6}>
                 <div className={classes.profile}>
                   <div className={classes.name}>
-                    <h3 className={classes.title}>{state.user.username}</h3>
+                    <h3 className={classes.title}>{user && user.username}</h3>
                     <h6>DESIGNER</h6>
                   </div>
                 </div>

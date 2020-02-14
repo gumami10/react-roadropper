@@ -19,7 +19,7 @@ import StepOne from './StepOne';
 const useStyles = makeStyles(styles);
 
 function getSteps() {
-  return ['Resumo do roadrop', 'Create an ad group', 'Create an ad'];
+  return ['Preencha aqui com as informações principais', 'Dê detalhes do seu Roadmap', 'Aqui você pode colocar links externos e conteúdos de apoio'];
 }
 
 function getStepContent(step) {
@@ -42,7 +42,7 @@ export default function ProfilePage(props) {
   const steps = getSteps();
 
   const isStepOptional = step => {
-    return step === 1;
+    return step === 2;
   };
 
   const isStepSkipped = step => {
@@ -160,7 +160,7 @@ export default function ProfilePage(props) {
                           )}
                           <Grid item xs={12} md={2}>
                             <Button variant="contained" color="primary" onClick={handleNext} className={classes.button}>
-                              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                              {activeStep === steps.length ? 'Finish' : 'Next'}
                             </Button>
                           </Grid>
                         </Grid>
