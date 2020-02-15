@@ -9,22 +9,22 @@ const loading$ = new BehaviorSubject(false);
 
 const create = roadmap => {
   loading$.next(true);
-  return api.post('roadmaps', roadmap).pipe(finalize(() => loading$.next(false)));
+  return api.post('roadmaps', { roadmap }).pipe(finalize(() => loading$.next(false)));
 };
 
 const list = () => {
   loading$.next(true);
   return api.get('roadmaps').pipe(
-    finalize(() => loading$.next(false)),
-    tap(roadmaps => roadmaps$.next(roadmaps))
+    tap(roadmaps => roadmaps$.next(roadmaps)),
+    finalize(() => loading$.next(false))
   );
 };
 
 const show = id => {
   loading$.next(true);
   return api.get(`roadmaps/${id}`).pipe(
-    finalize(() => loading$.next(false)),
-    tap(roadmap => roadmap$.next(roadmap))
+    tap(roadmap => roadmap$.next(roadmap)),
+    finalize(() => loading$.next(false))
   );
 };
 
@@ -39,17 +39,17 @@ const edit = (roadmap, id) => {
 const exclude = id => {
   loading$.next(true);
   return api.delete(`roadmaps/${id}`).pipe(
-    finalize(() => loading$.next(false)),
-    tap(roadmap => roadmap$.next(roadmap))
+    tap(roadmap => roadmap$.next(roadmap)),
+    finalize(() => loading$.next(false))
   );
 };
 
-const getRoadmaps = () => roadmaps$.asObservable();
+const getRoadmapList = () => roadmaps$.asObservable();
 
 const getRoadmap = () => roadmap$.asObservable();
 
 const loading = () => loading$.asObservable();
 
-const roadmapService = { create, list, show, edit, exclude, getRoadmap, getRoadmaps, loading };
+const roadmapService = { create, list, show, edit, exclude, getRoadmap, getRoadmapList, loading };
 
 export default roadmapService;
