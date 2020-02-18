@@ -3,13 +3,21 @@ import { finalize, tap } from 'rxjs/operators';
 
 import api from './api';
 
-const roadmaps$ = new BehaviorSubject(null);
-const roadmap$ = new BehaviorSubject(null);
+const roadmaps$ = new BehaviorSubject([]);
+const roadmap$ = new BehaviorSubject({
+  title: '',
+  subject: '',
+  target: '',
+  content: '',
+  links: ''
+});
 const loading$ = new BehaviorSubject(false);
 
-const create = roadmap => {
+const getModel = () => roadmap$.asObservable();
+
+const create = (roadmap = roadmap$.value) => {
   loading$.next(true);
-  return api.post('roadmaps', { roadmap }).pipe(finalize(() => loading$.next(false)));
+  return api.post('roadmaps', { ...roadmap }).pipe(finalize(() => loading$.next(false)));
 };
 
 const list = () => {
@@ -31,8 +39,8 @@ const show = id => {
 const edit = (roadmap, id) => {
   loading$.next(true);
   return api.put(`roadmaps/${id}`, { roadmap }).pipe(
-    finalize(() => loading$.next(false)),
-    tap(roadmap => roadmap$.next(roadmap))
+    tap(roadmap => roadmap$.next(roadmap)),
+    finalize(() => loading$.next(false))
   );
 };
 
@@ -44,12 +52,12 @@ const exclude = id => {
   );
 };
 
-const getRoadmapList = () => roadmaps$.asObservable();
+const updateModel = value => {
+  roadmap$.next(value);
+};
 
-const getRoadmap = () => roadmap$.asObservable();
+const getRoadmapList = () => roadmaps$.asObservable();
 
 const loading = () => loading$.asObservable();
 
-const roadmapService = { create, list, show, edit, exclude, getRoadmap, getRoadmapList, loading };
-
-export default roadmapService;
+export { create, list, show, edit, exclude, updateModel, getModel, getRoadmapList, loading };

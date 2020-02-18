@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import styles from 'assets/jss/material-kit-react/views/newRoadmap.js';
 import CardBody from 'components/Card/CardBody.js';
 import CustomInput from 'components/CustomInput/CustomInput.js';
-import React, { memo, useContext } from 'react';
+import React, { useContext } from 'react';
 
 import RoadmapContext from './context';
 
@@ -11,10 +11,10 @@ import RoadmapContext from './context';
 // core components
 const useStyles = makeStyles(styles);
 
-function StepOne() {
+export default function FinalStep() {
   const classes = useStyles();
-
   const context = useContext(RoadmapContext);
+
   return (
     <div className={classes}>
       <CardBody>
@@ -29,8 +29,9 @@ function StepOne() {
             type: 'text',
             required: true,
             multiline: true,
-            onChange: e => context.updateModel({ ...context.roadmap, title: e.target.value }),
+            onChange: () => null,
             autoComplete: 'off',
+            disabled: true,
             value: context.roadmap.title
           }}
         />
@@ -42,8 +43,9 @@ function StepOne() {
           }}
           inputProps={{
             type: 'text',
-            onChange: e => context.updateModel({ ...context.roadmap, category: e.target.value }),
+            onChange: () => null,
             autoComplete: 'off',
+            disabled: true,
             value: context.roadmap.category
           }}
         />
@@ -55,14 +57,45 @@ function StepOne() {
           }}
           inputProps={{
             type: 'text',
-            onChange: e => context.updateModel({ ...context.roadmap, target: e.target.value }),
+            onChange: () => null,
             autoComplete: 'off',
+            disabled: true,
             value: context.roadmap.target
+          }}
+        />
+        <CustomInput
+          labelText="Coloque aqui o conteúdo do seu Roadmap"
+          id="content"
+          formControlProps={{
+            fullWidth: true
+          }}
+          inputProps={{
+            type: 'text',
+            onChange: () => null,
+            autoComplete: 'off',
+            multiline: true,
+            rows: 10,
+            disabled: true,
+            value: context.roadmap.content
+          }}
+        />
+        <CustomInput
+          labelText="Conteúdo de apoio"
+          id="links"
+          formControlProps={{
+            fullWidth: true
+          }}
+          inputProps={{
+            type: 'text',
+            onChange: () => null,
+            autoComplete: 'off',
+            multiline: true,
+            rows: 4,
+            disabled: true,
+            value: context.roadmap.links
           }}
         />
       </CardBody>
     </div>
   );
 }
-
-export default memo(StepOne);

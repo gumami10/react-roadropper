@@ -2,56 +2,41 @@ import { makeStyles } from '@material-ui/core/styles';
 import styles from 'assets/jss/material-kit-react/views/newRoadmap.js';
 import CardBody from 'components/Card/CardBody.js';
 import CustomInput from 'components/CustomInput/CustomInput.js';
-import React from 'react';
+import React, { memo, useContext } from 'react';
+
+import RoadmapContext from './context';
 
 // @material-ui/core components
 // @material-ui/icons
 // core components
 const useStyles = makeStyles(styles);
 
-export default function StepOne() {
+function StepThree() {
   const classes = useStyles();
+
+  const context = useContext(RoadmapContext);
 
   return (
     <div className={classes}>
       <CardBody>
         <CustomInput
-          labelText="Título do Roadmap"
-          id="title"
+          labelText="Links de referência"
+          id="links"
           formControlProps={{
             fullWidth: true
           }}
           inputProps={{
             type: 'text',
-            onChange: () => null,
-            autoComplete: 'off'
-          }}
-        />
-        <CustomInput
-          labelText="Categoria"
-          id="category"
-          formControlProps={{
-            fullWidth: true
-          }}
-          inputProps={{
-            type: 'text',
-            onChange: () => null,
-            autoComplete: 'off'
-          }}
-        />
-        <CustomInput
-          labelText="Público alvo"
-          id="target"
-          formControlProps={{
-            fullWidth: true
-          }}
-          inputProps={{
-            type: 'text',
-            onChange: () => null,
-            autoComplete: 'off'
+            onChange: e => context.updateModel({ ...context.roadmap, links: e.target.value }),
+            autoComplete: 'off',
+            multiline: true,
+            rows: 4,
+            value: context.roadmap.links
           }}
         />
       </CardBody>
     </div>
   );
 }
+
+export default memo(StepThree);
