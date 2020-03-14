@@ -23,7 +23,9 @@ const create = (roadmap = roadmap$.value) => {
 const list = () => {
   loading$.next(true);
   return api.get('roadmaps').pipe(
-    tap(roadmaps => roadmaps$.next(roadmaps)),
+    tap(roadmaps => {
+      roadmaps$.next(roadmaps);
+    }),
     finalize(() => loading$.next(false))
   );
 };

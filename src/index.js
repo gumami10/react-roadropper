@@ -5,12 +5,12 @@ import LandingPage from 'pages/LandingPage/LandingPage.js';
 import LoginPage from 'pages/LoginPage/LoginPage.js';
 import ProfilePage from 'pages/ProfilePage/ProfilePage.js';
 import Detail from 'pages/Roadmap/Detail.js';
+import ListRoadmap from 'pages/Roadmap/ListRoadmap';
 import NewRoadmap from 'pages/Roadmap/NewRoadmap';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Router, Switch } from 'react-router-dom';
 
-// pages for this product
 var hist = createBrowserHistory();
 
 ReactDOM.render(
@@ -20,6 +20,7 @@ ReactDOM.render(
       <Route path="/login" component={LoginPage} />
       <Route path="/detail" component={Detail} />
       <Route path="/new" component={NewRoadmap} />
+      <Route path="/roadrops" component={ListRoadmap} />
       <Route path="/" component={LandingPage} />
     </Switch>
   </Router>,

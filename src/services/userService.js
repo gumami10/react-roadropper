@@ -1,5 +1,5 @@
 import { BehaviorSubject } from 'rxjs';
-import { finalize, tap } from 'rxjs/operators';
+import { filter, finalize, switchMap, tap } from 'rxjs/operators';
 import api from 'services/api';
 
 const user$ = new BehaviorSubject(null);
@@ -14,6 +14,7 @@ const login = ({ email, password }) => {
     })
     .pipe(
       tap(data => user$.next(data.user)),
+      tap(data => window.localStorage.setItem('user', JSON.stringify(data.user))),
       finalize(() => loading$.next(false))
     );
 };
@@ -33,10 +34,19 @@ const register = ({ username, email, password, description }) => {
     );
 };
 
+const logout = () => {
+  return user$.pipe(
+    filter(user => !!user),
+    tap(() => window.localStorage.removeItem('user')),
+    tap(() => user$.next(null)),
+    switchMap(() => user$.asObservable())
+  );
+};
+
 const getUser = () => user$.asObservable();
 
 const loading = () => loading$.asObservable();
 
-const userService = { getUser, login, register, loading };
+const userService = { getUser, login, register, logout, loading };
 
 export default userService;

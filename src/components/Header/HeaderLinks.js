@@ -7,8 +7,8 @@ import { Person } from '@material-ui/icons';
 import styles from 'assets/jss/material-kit-react/components/headerLinksStyle.js';
 import Button from 'components/CustomButtons/Button.js';
 import CustomDropdown from 'components/CustomDropdown/CustomDropdown.js';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useCallback } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { useObservable } from 'react-use-observable';
 import userService from 'services/userService';
 
@@ -20,13 +20,21 @@ const useStyles = makeStyles(styles);
 
 export default function HeaderLinks() {
   const [user] = useObservable(() => userService.getUser());
+
+  const history = useHistory();
+
+  const handleLogout = useCallback(() => {
+    // eslint-disable-next-line react/prop-types
+    userService.logout().subscribe(() => history.push('/')).complete();
+  });
+
   const classes = useStyles();
 
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
         { user
-          ? 
+          ?
           <CustomDropdown
             noLiPadding
             buttonText={user.username}
@@ -46,11 +54,17 @@ export default function HeaderLinks() {
               >
                 Acompanhe seu progresso
               </Link>,
-              <Link to="/"
+              <Link to="/roadrops"
               className={classes.dropdownLink}
               >
                 Busque por Roadmaps
-              </Link>
+              </Link>,
+              <div
+              onClick={() => handleLogout()}
+              className={classes.dropdownLink}
+              >
+                Sair
+              </div>
             ]}
           />
           :

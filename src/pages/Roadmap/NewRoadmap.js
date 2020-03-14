@@ -149,7 +149,7 @@ export default function ProfilePage(props) {
                         </Grid>
                         <Grid item xs={12} md={2}>
                           <Button onClick={handleBack} variant="contained" color="primary" className={classes.button}>
-                            Voltar para edição
+                            Editar
                           </Button>
                         </Grid>
                         <Grid item xs={12} md={2}>
