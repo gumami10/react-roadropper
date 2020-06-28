@@ -1,8 +1,9 @@
 import { container, title } from 'assets/jss/material-kit-react.js';
 import imagesStyle from 'assets/jss/material-kit-react/imagesStyles.js';
 
-const profilePageStyle = {
+const newRoadmap = {
   container,
+  width: '100%',
   button_text: {
     color: '#ffffff'
   },
@@ -29,6 +30,7 @@ const profilePageStyle = {
     color: '#999',
     textAlign: 'center !important'
   },
+
   name: {
     marginTop: '-80px'
   },
@@ -72,4 +74,4 @@ const profilePageStyle = {
   }
 };
 
-export default profilePageStyle;
+export default newRoadmap;
