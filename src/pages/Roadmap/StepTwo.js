@@ -24,35 +24,25 @@ function StepTwo() {
     sizeLG: 900,
     sizeMD: 700,
     sizeSM: 400,
-    width: '1200px'
+    width: '1200px',
+    height: '500px',
+    uploader: {
+      insertImageAsBase64URI: true
+    },
+    disablePlugins: 'xpath,about,autofocus,iframe',
+    buttons:
+      '|,bold,strikethrough,underline,italic,eraser,ul,ol,font,fontsize,paragraph,|,image,video,table,link,\n,selectall,cut,copy,paste,copyformat,hr'
     // all options from https://xdsoft.net/jodit/doc/
   };
 
   return (
-    <CardBody className={classes} id="eric gropp">
-      {/* <CustomInput
-          labelText="Coloque aqui o conteúdo do seu Roadmap"
-          id="content"
-          formControlProps={{
-            fullWidth: true
-          }}
-          inputProps={{
-            type: 'text',
-            onChange: e => context.updateModel({ ...context.roadmap, content: e.target.value }),
-            autoComplete: 'off',
-            multiline: true,
-            rows: 10,
-            variant: 'outlined',
-            value: context.roadmap.content
-          }}
-        /> */}
+    <CardBody className={classes.newRoadmap}>
       <JoditEditor
         ref={editor}
-        value={content}
+        value={context.roadmap.content}
         config={config}
         tabIndex={1} // tabIndex of textarea
-        onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-        onChange={newContent => {}}
+        onBlur={newContent => context.updateModel({ ...context.roadmap, content: newContent })} // preferred to use only this option to update the content for performance reasons
       />
     </CardBody>
   );
