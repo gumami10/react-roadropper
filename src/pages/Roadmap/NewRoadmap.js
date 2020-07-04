@@ -160,8 +160,8 @@ export default function ProfilePage(props) {
                       </Grid>
                     ) : (
                       <Grid container className={classes.content} justify="center">
-                        <Grid item xs={12} md={6}>
-                          <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+                        <Grid item xs={12} md={9}>
+                          {getStepContent(activeStep)}
                         </Grid>
                         <Grid item xs={12}>
                           <Grid container justify="center">

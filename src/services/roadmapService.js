@@ -8,7 +8,7 @@ const roadmap$ = new BehaviorSubject({
   title: '',
   subject: '',
   target: '',
-  content: '',
+  content: '<p>Manda bala no seu conteúdo aqui! :)</p>',
   links: ''
 });
 const loading$ = new BehaviorSubject(false);
