@@ -10,19 +10,26 @@ import NewRoadmap from 'pages/Roadmap/NewRoadmap';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Router, Switch } from 'react-router-dom';
+import userService from 'services/userService';
 
 var hist = createBrowserHistory();
 
-ReactDOM.render(
-  <Router history={hist}>
-    <Switch>
-      <Route path="/dash" component={ProfilePage} />
-      <Route path="/login" component={LoginPage} />
-      <Route path="/detail" component={Detail} />
-      <Route path="/new" component={NewRoadmap} />
-      <Route path="/roadrops" component={ListRoadmap} />
-      <Route path="/" component={LandingPage} />
-    </Switch>
-  </Router>,
-  document.getElementById('root')
-);
+const App = () => {
+  React.useEffect(() => {
+    userService.getStatus().subscribe();
+  }, []);
+  return (
+    <Router history={hist}>
+      <Switch>
+        <Route path="/dash" component={ProfilePage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/detail" component={Detail} />
+        <Route path="/new" component={NewRoadmap} />
+        <Route path="/roadrops" component={ListRoadmap} />
+        <Route path="/" component={LandingPage} />
+      </Switch>
+    </Router>
+  );
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));
