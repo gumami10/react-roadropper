@@ -15,6 +15,8 @@ import CustomInput from 'components/CustomInput/CustomInput.js';
 import GridContainer from 'components/Grid/GridContainer.js';
 import GridItem from 'components/Grid/GridItem.js';
 import Header from 'components/Header/Header.js';
+import { useObservable } from 'react-use-observable';
+import { CircularProgress } from '@material-ui/core';
 import HeaderLinks from 'components/Header/HeaderLinks.js';
 import PropTypes from 'prop-types';
 import React, { useCallback, useState } from 'react';
@@ -67,9 +69,9 @@ export default function LoginPage(props) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [ isLoading ] = useObservable(() => userService.isLoading(), []);
 
   const handleClickRegister = useCallback(() => {
-    // eslint-disable-next-line react/prop-types
     userService.register({ username, email, password }).subscribe(() => props.history.push('/'));
   }, [username, email, password, props]);
 
@@ -142,9 +144,17 @@ export default function LoginPage(props) {
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                      <Button simple color="primary" size="lg" onClick={handleClickLogin}>
-                        Sign in
-                      </Button>
+                      {isLoading ?
+                        <>
+                          <Button simple color="primary" size="lg" disable>
+                            Signing...
+                          </Button>
+                          <CircularProgress size={20} variant="indeterminate" />
+                        </> :
+                        <Button simple color="primary" size="lg" onClick={handleClickLogin}>
+                          Sign in
+                        </Button>
+                      }
                     </CardFooter>
                   </TabPanel>
                   <TabPanel value={value} index={1}>
@@ -200,9 +210,17 @@ export default function LoginPage(props) {
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                      <Button simple color="primary" size="lg" onClick={handleClickRegister}>
-                        Sign up
-                      </Button>
+                      {isLoading ?
+                        <>
+                          <Button simple color="primary" size="lg" disable>
+                            Signing...
+                          </Button>
+                          <CircularProgress size={20} variant="indeterminate" />
+                        </> :
+                        <Button simple color="primary" size="lg" onClick={handleClickRegister}>
+                          Sign up
+                        </Button>
+                      }
                     </CardFooter>
                   </TabPanel>
                 </form>

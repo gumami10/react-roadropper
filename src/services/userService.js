@@ -18,7 +18,7 @@ const login = ({ email, password }) => {
       finalize(() => loading$.next(false))
     );
 };
-//lk
+
 const register = ({ username, email, password, description }) => {
   loading$.next(true);
   return api
@@ -45,8 +45,8 @@ const logout = () => {
 
 const getUser = () => user$.asObservable();
 
-const loading = () => loading$.asObservable();
+const isLoading = () => loading$.asObservable();
 
-const userService = { getUser, login, register, logout, loading };
+const userService = { getUser, login, register, logout, isLoading };
 
 export default userService;
