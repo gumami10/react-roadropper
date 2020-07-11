@@ -55,10 +55,10 @@ const getUser = () => {
   return user$.asObservable();
 };
 
-const loading = () => loading$.asObservable();
+const isLoading = () => loading$.asObservable();
 
 const getStaticValue = () => user$.value;
 
-const userService = { getUser, login, register, logout, loading, getStaticValue, getStatus };
+const userService = { getUser, login, register, logout, isLoading, getStaticValue, getStatus };
 
 export default userService;
