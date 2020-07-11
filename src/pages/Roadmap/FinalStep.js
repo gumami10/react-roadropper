@@ -14,7 +14,6 @@ const useStyles = makeStyles(styles);
 export default function FinalStep() {
   const classes = useStyles();
   const context = useContext(RoadmapContext);
-
   return (
     <div className={classes}>
       <CardBody>
@@ -63,22 +62,7 @@ export default function FinalStep() {
             value: context.roadmap.target
           }}
         />
-        <CustomInput
-          labelText="Coloque aqui o conteúdo do seu Roadmap"
-          id="content"
-          formControlProps={{
-            fullWidth: true
-          }}
-          inputProps={{
-            type: 'text',
-            onChange: () => null,
-            autoComplete: 'off',
-            multiline: true,
-            rows: 10,
-            disabled: true,
-            value: context.roadmap.content
-          }}
-        />
+        <div dangerouslySetInnerHTML={{ __html: context.roadmap.content }} />
         <CustomInput
           labelText="Conteúdo de apoio"
           id="links"
