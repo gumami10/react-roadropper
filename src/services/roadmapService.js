@@ -1,5 +1,6 @@
 import { BehaviorSubject } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
+import userService from 'services/userService';
 
 import api from './api';
 
@@ -17,7 +18,7 @@ const getModel = () => roadmap$.asObservable();
 
 const create = (roadmap = roadmap$.value) => {
   loading$.next(true);
-  return api.post('roadmaps', { ...roadmap }).pipe(finalize(() => loading$.next(false)));
+  return api.post('roadmaps', { ...roadmap }, userService.getStaticValue()).pipe(finalize(() => loading$.next(false)));
 };
 
 const list = () => {
