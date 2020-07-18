@@ -65,7 +65,7 @@ const ListRoadmap = () => {
                       </div>
                       <div className="roadrop__main">
                         <div className="roadrop__subject">{roadrop.subject}</div>
-                        <div className="roadrop__content">{roadrop.content}</div>
+                        <div className="roadrop__content" dangerouslySetInnerHTML={{ __html: roadrop.content }}></div>
                         <div className="roadrop__creator">{roadrop.creator}</div>
                       </div>
                       <div className="roadrop__footer">
