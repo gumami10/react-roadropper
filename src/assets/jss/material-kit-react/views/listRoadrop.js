@@ -30,7 +30,7 @@ const listRoadropStyle = {
     textAlign: 'center !important'
   },
   name: {
-    marginTop: '-80px'
+    marginTop: '-90px'
   },
   ...imagesStyle,
   main: {
@@ -39,6 +39,8 @@ const listRoadropStyle = {
     zIndex: '3'
   },
   mainRaised: {
+    padding: '16px 0',
+    background: '#f0f2f5',
     margin: '-60px 30px 0px',
     borderRadius: '6px',
     boxShadow: '0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)'
@@ -79,20 +81,20 @@ const listRoadropStyle = {
     }
   },
   roadrop: {
-    borderBottom: '1px solid #cecece',
+    border: '1px solid #cecece',
     textDecoration: 'none',
     padding: 16,
-    '&:hover': {
-      transitionDuration: '0.2s',
-      transitionProperty: 'background-color',
-      backgroundColor: 'rgb(29,161,242,0.04)'
-    },
+    background: '#fff',
+    borderRadius: 4,
 
     '& .roadrop__header': {
-      alignItems: 'baseline',
+      alignItems: 'start',
       display: 'flex',
       justifyContent: 'space-between',
-      textDecoration: 'none'
+      textDecoration: 'none',
+      '& h2': {
+        marginTop: 0
+      }
     },
     '& .roadrop__main': {
       margin: '10px 0',
