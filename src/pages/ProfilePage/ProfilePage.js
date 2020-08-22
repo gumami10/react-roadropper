@@ -25,10 +25,6 @@ import React from 'react';
 import { useObservable } from 'react-use-observable';
 import userService from 'services/userService';
 
-// nodejs library that concatenates classes
-// @material-ui/core components
-// @material-ui/icons
-// core components
 const useStyles = makeStyles(styles);
 
 export default function ProfilePage(props) {

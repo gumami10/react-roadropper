@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CommentIcon from '@material-ui/icons/Comment';
 import Follow from '@material-ui/icons/EmojiPeople';
 import HonorIcon from '@material-ui/icons/Star';
-import styles from 'assets/jss/material-kit-react/views/listRoadmap';
+import styles from 'assets/jss/material-kit-react/views/listRoadrop';
 import classNames from 'classnames';
 import Footer from 'components/Footer/Footer.js';
 import GridContainer from 'components/Grid/GridContainer.js';
@@ -14,18 +14,18 @@ import Parallax from 'components/Parallax/Parallax.js';
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useObservable } from 'react-use-observable';
-import { getRoadmapList, list } from 'services/roadmapService';
+import { getRoadropList, list } from 'services/roadropService';
 
 const useStyles = makeStyles(styles);
 
-const ListRoadmap = () => {
+const ListRoadrop = () => {
   const classes = useStyles();
 
   useEffect(() => {
     list().subscribe();
   }, []);
 
-  const [roadropList] = useObservable(() => getRoadmapList(), []);
+  const [roadropList] = useObservable(() => getRoadropList(), []);
 
   if (!roadropList) return null;
 
@@ -101,4 +101,4 @@ const ListRoadmap = () => {
   );
 };
 
-export default ListRoadmap;
+export default ListRoadrop;

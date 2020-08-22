@@ -13,7 +13,7 @@ const productStyle = {
     textDecoration: 'none'
   },
   description: {
-    color: '#999'
+    color: '#463a3a'
   },
   link: {
     cursor: 'pointer'

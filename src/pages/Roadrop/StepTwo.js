@@ -1,11 +1,11 @@
 import { CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Editor } from '@tinymce/tinymce-react';
-import styles from 'assets/jss/material-kit-react/views/newRoadmap.js';
+import styles from 'assets/jss/material-kit-react/views/newRoadrop.js';
 import CardBody from 'components/Card/CardBody.js';
 import React, { memo, useContext, useState } from 'react';
 
-import RoadmapContext from './context';
+import RoadropContext from './context';
 
 // @material-ui/core components
 // @material-ui/icons
@@ -17,10 +17,10 @@ function StepTwo() {
 
   const [loading, setLoading] = useState(true);
 
-  const context = useContext(RoadmapContext);
+  const context = useContext(RoadropContext);
 
   const handleEditorChange = e => {
-    context.updateModel({ ...context.roadmap, content: e.target.getContent() });
+    context.updateModel({ ...context.roadrop, content: e.target.getContent() });
   };
 
   const config = {
@@ -35,11 +35,11 @@ function StepTwo() {
   };
 
   return (
-    <CardBody style={{ display: 'flex', justifyContent: 'center' }} className={classes.newRoadmap}>
+    <CardBody style={{ display: 'flex', justifyContent: 'center' }} className={classes.newRoadrop}>
       {loading && <CircularProgress className={classes.loader} size={120} thickness={2.5} />}
 
       <Editor
-        initialValue={context.roadmap.content}
+        initialValue={context.roadrop.content}
         init={config}
         apiKey="xel3zt3n4517swww97c13270z9e3sptniqrwlhc62eeu3naw"
         onChange={handleEditorChange}

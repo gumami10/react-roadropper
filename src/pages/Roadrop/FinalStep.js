@@ -1,10 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles';
-import styles from 'assets/jss/material-kit-react/views/newRoadmap.js';
+import styles from 'assets/jss/material-kit-react/views/newRoadrop.js';
 import CardBody from 'components/Card/CardBody.js';
 import CustomInput from 'components/CustomInput/CustomInput.js';
 import React, { useContext } from 'react';
 
-import RoadmapContext from './context';
+import RoadropContext from './context';
 
 // @material-ui/core components
 // @material-ui/icons
@@ -13,12 +13,12 @@ const useStyles = makeStyles(styles);
 
 export default function FinalStep() {
   const classes = useStyles();
-  const context = useContext(RoadmapContext);
+  const context = useContext(RoadropContext);
   return (
     <div className={classes}>
       <CardBody>
         <CustomInput
-          labelText="Título do Roadmap"
+          labelText="Título do Roadrop"
           id="title"
           formControlProps={{
             fullWidth: true,
@@ -31,7 +31,7 @@ export default function FinalStep() {
             onChange: () => null,
             autoComplete: 'off',
             disabled: true,
-            value: context.roadmap.title
+            value: context.roadrop.title
           }}
         />
         <CustomInput
@@ -45,7 +45,7 @@ export default function FinalStep() {
             onChange: () => null,
             autoComplete: 'off',
             disabled: true,
-            value: context.roadmap.category
+            value: context.roadrop.category
           }}
         />
         <CustomInput
@@ -59,10 +59,10 @@ export default function FinalStep() {
             onChange: () => null,
             autoComplete: 'off',
             disabled: true,
-            value: context.roadmap.target
+            value: context.roadrop.target
           }}
         />
-        <div dangerouslySetInnerHTML={{ __html: context.roadmap.content }} />
+        <div dangerouslySetInnerHTML={{ __html: context.roadrop.content }} />
         <CustomInput
           labelText="Conteúdo de apoio"
           id="links"
@@ -76,7 +76,7 @@ export default function FinalStep() {
             multiline: true,
             rows: 4,
             disabled: true,
-            value: context.roadmap.links
+            value: context.roadrop.links
           }}
         />
       </CardBody>

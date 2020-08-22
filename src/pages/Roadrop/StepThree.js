@@ -1,10 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles';
-import styles from 'assets/jss/material-kit-react/views/newRoadmap.js';
+import styles from 'assets/jss/material-kit-react/views/newRoadrop.js';
 import CardBody from 'components/Card/CardBody.js';
 import CustomInput from 'components/CustomInput/CustomInput.js';
 import React, { memo, useContext } from 'react';
 
-import RoadmapContext from './context';
+import RoadropContext from './context';
 
 // @material-ui/core components
 // @material-ui/icons
@@ -14,7 +14,7 @@ const useStyles = makeStyles(styles);
 function StepThree() {
   const classes = useStyles();
 
-  const context = useContext(RoadmapContext);
+  const context = useContext(RoadropContext);
 
   return (
     <div className={classes}>
@@ -27,11 +27,11 @@ function StepThree() {
           }}
           inputProps={{
             type: 'text',
-            onChange: e => context.updateModel({ ...context.roadmap, links: e.target.value }),
+            onChange: e => context.updateModel({ ...context.roadrop, links: e.target.value }),
             autoComplete: 'off',
             multiline: true,
             rows: 4,
-            value: context.roadmap.links
+            value: context.roadrop.links
           }}
         />
       </CardBody>

@@ -1,31 +1,28 @@
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Icon from '@material-ui/core/Icon';
 import { makeStyles } from '@material-ui/core/styles';
-import styles from 'assets/jss/material-kit-react/views/listRoadmap';
+import CommentIcon from '@material-ui/icons/Comment';
+import Follow from '@material-ui/icons/EmojiPeople';
+import HonorIcon from '@material-ui/icons/Star';
+import styles from 'assets/jss/material-kit-react/views/listRoadrop';
 import classNames from 'classnames';
 import Footer from 'components/Footer/Footer.js';
 import Header from 'components/Header/Header.js';
-import Icon from '@material-ui/core/Icon';
-import CommentIcon from '@material-ui/icons/Comment';
-import HonorIcon from '@material-ui/icons/Star';
-import Follow from '@material-ui/icons/EmojiPeople';
 import HeaderLinks from 'components/Header/HeaderLinks.js';
 import Parallax from 'components/Parallax/Parallax.js';
 import React from 'react';
-import * as roadmapService from 'services/roadmapService';
 import { useObservable } from 'react-use-observable';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import * as roadropService from 'services/roadropService';
 
 
-// nodejs library that concatenates classes
-// @material-ui/core components
-// @material-ui/icons
-// core components
+
 const useStyles = makeStyles(styles);
 
 export default function DetailRoadrop(props) {
     const roadropId = props.match.params.id;
 
-    const [roadrop] = useObservable(() => roadmapService.show(roadropId), [roadropId]);
-    const [loading] = useObservable(() => roadmapService.loading());
+    const [roadrop] = useObservable(() => roadropService.show(roadropId), [roadropId]);
+    const [loading] = useObservable(() => roadropService.loading());
 
   const classes = useStyles();
   const { ...rest } = props;

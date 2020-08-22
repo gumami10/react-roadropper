@@ -20,7 +20,7 @@ export default function ProductSection() {
     <div className={classes.section}>
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={8}>
-          <h2 className={classes.title}>Conheça nossos roadmaps</h2>
+          <h2 className={classes.title}>Conheça nossos roadrops</h2>
           <h5 className={classes.description}>
             Roadrops são trilhas de estudo construídos pelos nossos próprios usuários que valorizam compartilhar conhecimento. Pesquise pelos roadrops
             que mais te atraem e sinta-se a vontade para honrar, comentar e até mesmo contribuir com os nossos Roadroppers.

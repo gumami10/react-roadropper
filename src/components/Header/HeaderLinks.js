@@ -1,7 +1,8 @@
-/*eslint-disable*/
+import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import { makeStyles } from '@material-ui/core/styles';
+import Tooltip from '@material-ui/core/Tooltip';
 import { Person } from '@material-ui/icons';
 import styles from 'assets/jss/material-kit-react/components/headerLinksStyle.js';
 import CustomDropdown from 'components/CustomDropdown/CustomDropdown.js';
@@ -10,10 +11,6 @@ import { Link, useHistory } from 'react-router-dom';
 import { useObservable } from 'react-use-observable';
 import userService from 'services/userService';
 
-// react components for routing our app without refresh
-// @material-ui/core components
-// @material-ui/icons
-// core components
 const useStyles = makeStyles(styles);
 
 export default function HeaderLinks() {
@@ -22,7 +19,6 @@ export default function HeaderLinks() {
   const history = useHistory();
 
   const handleLogout = useCallback(() => {
-    // eslint-disable-next-line react/prop-types
     userService.logout().subscribe(() => history.push('/')).complete();
   });
 
@@ -46,16 +42,16 @@ export default function HeaderLinks() {
               className={classes.dropdownLink}
               >
                 Publique seu roadrop
-              </Link>,/*
+              </Link>,
               <Link to="/dash"
                 className={classes.dropdownLink}
               >
                 Acompanhe seu progresso
-              </Link>,*/
+              </Link>,
               <Link to="/roadrops"
               className={classes.dropdownLink}
               >
-                Busque por Roadmaps
+                Busque por Roadrops
               </Link>,
               <div
               onClick={() => handleLogout()}
@@ -72,10 +68,27 @@ export default function HeaderLinks() {
               color="primary"
               className={classes.navLink}
             >
-              Logar
+              Entrar
             </Link>
           </ListItem>
         }
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Tooltip
+          id="instagram-twitter"
+          title="Follow us on github"
+          placement={window.innerWidth > 959 ? "top" : "left"}
+          classes={{ tooltip: classes.tooltip }}
+        >
+          <Button
+            href="https://github.com/thunderdev-community"
+            target="_blank"
+            color="transparent"
+            className={classes.navLink}
+          >
+            <i className={classes.socialIcons + " fab fa-github"} />
+          </Button>
+        </Tooltip>
       </ListItem>
       {/* <ListItem className={classes.listItem}>
         <Tooltip

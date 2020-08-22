@@ -1,10 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles';
-import styles from 'assets/jss/material-kit-react/views/newRoadmap.js';
+import styles from 'assets/jss/material-kit-react/views/newRoadrop.js';
 import CardBody from 'components/Card/CardBody.js';
 import CustomInput from 'components/CustomInput/CustomInput.js';
 import React, { memo, useContext } from 'react';
 
-import RoadmapContext from './context';
+import RoadropContext from './context';
 
 // @material-ui/core components
 // @material-ui/icons
@@ -14,12 +14,12 @@ const useStyles = makeStyles(styles);
 function StepOne() {
   const classes = useStyles();
 
-  const context = useContext(RoadmapContext);
+  const context = useContext(RoadropContext);
   return (
     <div className={classes}>
       <CardBody>
         <CustomInput
-          labelText="Título do Roadmap"
+          labelText="Título do Roadrop"
           id="title"
           formControlProps={{
             fullWidth: true,
@@ -29,9 +29,9 @@ function StepOne() {
             type: 'text',
             required: true,
             multiline: true,
-            onChange: e => context.updateModel({ ...context.roadmap, title: e.target.value }),
+            onChange: e => context.updateModel({ ...context.roadrop, title: e.target.value }),
             autoComplete: 'off',
-            value: context.roadmap.title
+            value: context.roadrop.title
           }}
         />
         <CustomInput
@@ -42,9 +42,9 @@ function StepOne() {
           }}
           inputProps={{
             type: 'text',
-            onChange: e => context.updateModel({ ...context.roadmap, category: e.target.value }),
+            onChange: e => context.updateModel({ ...context.roadrop, category: e.target.value }),
             autoComplete: 'off',
-            value: context.roadmap.category
+            value: context.roadrop.category
           }}
         />
         <CustomInput
@@ -55,9 +55,9 @@ function StepOne() {
           }}
           inputProps={{
             type: 'text',
-            onChange: e => context.updateModel({ ...context.roadmap, target: e.target.value }),
+            onChange: e => context.updateModel({ ...context.roadrop, target: e.target.value }),
             autoComplete: 'off',
-            value: context.roadmap.target
+            value: context.roadrop.target
           }}
         />
       </CardBody>

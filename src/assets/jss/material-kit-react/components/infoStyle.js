@@ -1,13 +1,13 @@
 import {
-  primaryColor,
-  warningColor,
   dangerColor,
-  successColor,
-  infoColor,
-  roseColor,
   grayColor,
-  title
-} from "assets/jss/material-kit-react.js";
+  infoColor,
+  primaryColor,
+  roseColor,
+  successColor,
+  title,
+  warningColor,
+} from 'assets/jss/material-kit-react.js';
 
 const infoStyle = {
   infoArea: {
@@ -51,7 +51,7 @@ const infoStyle = {
   },
   title,
   description: {
-    color: grayColor,
+    color: '#463a3a',
     overflow: "hidden",
     marginTop: "0px",
     fontSize: "14px"

@@ -1,4 +1,4 @@
-import { Box, Tab, Tabs, Typography } from '@material-ui/core';
+import { Box, CircularProgress, Tab, Tabs, Typography } from '@material-ui/core';
 import Icon from '@material-ui/core/Icon';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,11 +15,10 @@ import CustomInput from 'components/CustomInput/CustomInput.js';
 import GridContainer from 'components/Grid/GridContainer.js';
 import GridItem from 'components/Grid/GridItem.js';
 import Header from 'components/Header/Header.js';
-import { useObservable } from 'react-use-observable';
-import { CircularProgress } from '@material-ui/core';
 import HeaderLinks from 'components/Header/HeaderLinks.js';
 import PropTypes from 'prop-types';
 import React, { useCallback, useState } from 'react';
+import { useObservable } from 'react-use-observable';
 import userService from 'services/userService';
 
 // @material-ui/core components

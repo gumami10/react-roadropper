@@ -1,6 +1,6 @@
 import { Button, Grid, Step, StepLabel, Stepper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import styles from 'assets/jss/material-kit-react/views/newRoadmap';
+import styles from 'assets/jss/material-kit-react/views/newRoadrop';
 import classNames from 'classnames';
 import Footer from 'components/Footer/Footer.js';
 import GridContainer from 'components/Grid/GridContainer.js';
@@ -10,22 +10,19 @@ import HeaderLinks from 'components/Header/HeaderLinks.js';
 import Parallax from 'components/Parallax/Parallax.js';
 import React from 'react';
 import { useObservable } from 'react-use-observable';
-import * as roadmapService from 'services/roadmapService.js';
+import * as roadropService from 'services/roadropService.js';
 
-import RoadmapContext from './context';
+import RoadropContext from './context';
 import FinalStep from './FinalStep';
 import StepOne from './StepOne';
 import StepThree from './StepThree';
 import StepTwo from './StepTwo';
 
-// nodejs library that concatenates classes
-// @material-ui/core components
-// @material-ui/icons
-// core components
+
 const useStyles = makeStyles(styles);
 
 function getSteps() {
-  return ['Preencha aqui com as informações principais', 'Dê detalhes do seu Roadmap', 'Aqui você pode colocar links externos e conteúdos de apoio'];
+  return ['Preencha aqui com as informações principais', 'Dê detalhes do seu Roadrop', 'Aqui você pode colocar links externos e conteúdos de apoio'];
 }
 
 function getStepContent(step) {
@@ -46,7 +43,7 @@ export default function ProfilePage(props) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const steps = getSteps();
-  const [roadmap] = useObservable(() => roadmapService.getModel());
+  const [roadrop] = useObservable(() => roadropService.getModel());
 
   const isStepOptional = step => {
     return step === 2;
@@ -57,8 +54,7 @@ export default function ProfilePage(props) {
   };
 
   const handleCreate = () => {
-    roadmapService.create().subscribe(() => {
-      // eslint-disable-next-line react/prop-types
+    roadropService.create().subscribe(() => {
       props.history.push('/');
     });
   };
@@ -95,12 +91,12 @@ export default function ProfilePage(props) {
 
   const { ...rest } = props;
 
-  if (!roadmap) {
+  if (!roadrop) {
     return null;
   }
 
   return (
-    <RoadmapContext.Provider value={{ roadmap, updateModel: roadmapService.updateModel }}>
+    <RoadropContext.Provider value={{ roadrop, updateModel: roadropService.updateModel }}>
       <div>
         <Header
           color="transparent"
@@ -195,6 +191,6 @@ export default function ProfilePage(props) {
         </div>
         <Footer />
       </div>
-    </RoadmapContext.Provider>
+    </RoadropContext.Provider>
   );
 }

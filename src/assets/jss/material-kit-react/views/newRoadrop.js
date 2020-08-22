@@ -1,7 +1,7 @@
 import { container, title } from 'assets/jss/material-kit-react.js';
 import imagesStyle from 'assets/jss/material-kit-react/imagesStyles.js';
 
-const newRoadmap = {
+const newRoadrop = {
   container,
   width: '100%',
   display: 'flex',
@@ -78,4 +78,4 @@ const newRoadmap = {
   }
 };
 
-export default newRoadmap;
+export default newRoadrop;

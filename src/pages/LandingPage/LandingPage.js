@@ -11,12 +11,6 @@ import React from 'react';
 
 import ProductSection from './Sections/ProductSection.js';
 
-// nodejs library that concatenates classes
-// @material-ui/core components
-// @material-ui/icons
-
-// core components
-// Sections for this page
 const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);
@@ -43,7 +37,10 @@ export default function LandingPage(props) {
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
               <h1 className={classes.title}>Bem vindo ao RoadRopper.</h1>
-              <h4>Uma plataforma aonde você pode organizar os seus estudos da forma mais eficaz.</h4>
+              <h4>
+                Cansado de procurar pelo curso ideal de programação na internet? Então chegou ao lugar certo, procure pelo tema que mais te atrai e comece aprender
+                completamente de graça agora mesmo!
+              </h4>
               <br />
             </GridItem>
           </GridContainer>
