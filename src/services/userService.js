@@ -51,7 +51,6 @@ const logout = () => {
 };
 
 const getUser = () => {
-  console.log(user$.value);
   return user$.asObservable();
 };
 
