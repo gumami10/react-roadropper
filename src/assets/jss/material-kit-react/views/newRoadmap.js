@@ -4,6 +4,7 @@ import imagesStyle from 'assets/jss/material-kit-react/imagesStyles.js';
 const newRoadmap = {
   container,
   width: '100%',
+  display: 'flex',
   button_text: {
     color: '#ffffff'
   },
@@ -71,6 +72,9 @@ const newRoadmap = {
   },
   content: {
     padding: 24
+  },
+  loader: {
+    margin: '12px 0'
   }
 };
 
