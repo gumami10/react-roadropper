@@ -22,9 +22,9 @@ export default function ProductSection() {
         <GridItem xs={12} sm={12} md={8}>
           <h2 className={classes.title}>Conheça nossos roadmaps</h2>
           <h5 className={classes.description}>
-            This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information.
-            Remember that by this time, the user is curious, otherwise he wouldn
-            {"'"}t scroll to get here. Add a button if you want the user to see more.
+            Roadrops são trilhas de estudo construídos pelos nossos próprios usuários que valorizam compartilhar conhecimento. Pesquise pelos roadrops
+            que mais te atraem e sinta-se a vontade para honrar, comentar e até mesmo contribuir com os nossos Roadroppers.
+            {'<3'}
           </h5>
         </GridItem>
       </GridContainer>
@@ -34,7 +34,7 @@ export default function ProductSection() {
             <Link className={classes.link}>
               <InfoArea
                 title="Front End"
-                description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
+                description="Desenvolvimento web front-end é a prática de converter dados em uma interface gráfica, através do uso de HTML, CSS e JavaScript, para que os usuários possam visualizar e interagir com esses dados."
                 icon={Chat}
                 iconColor="info"
                 vertical
@@ -45,7 +45,7 @@ export default function ProductSection() {
             <Link className={classes.link}>
               <InfoArea
                 title="Back End"
-                description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
+                description="Desenvolvimento de sistemas para servidor, gerenciando dados das aplicações em grande escala."
                 icon={VerifiedUser}
                 iconColor="success"
                 vertical
@@ -56,7 +56,7 @@ export default function ProductSection() {
             <Link className={classes.link}>
               <InfoArea
                 title="DevOps"
-                description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
+                description="O DevOps é a combinação de filosofias culturais, práticas e ferramentas que aumentam a capacidade de uma empresa de distribuir aplicativos e serviços em alta velocidade."
                 icon={Fingerprint}
                 iconColor="danger"
                 vertical

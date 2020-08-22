@@ -2,10 +2,8 @@
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import { makeStyles } from '@material-ui/core/styles';
-import Tooltip from '@material-ui/core/Tooltip';
 import { Person } from '@material-ui/icons';
 import styles from 'assets/jss/material-kit-react/components/headerLinksStyle.js';
-import Button from 'components/CustomButtons/Button.js';
 import CustomDropdown from 'components/CustomDropdown/CustomDropdown.js';
 import React, { useCallback } from 'react';
 import { Link, useHistory } from 'react-router-dom';
@@ -48,12 +46,12 @@ export default function HeaderLinks() {
               className={classes.dropdownLink}
               >
                 Publique seu roadrop
-              </Link>,
+              </Link>,/*
               <Link to="/dash"
-              className={classes.dropdownLink}
+                className={classes.dropdownLink}
               >
                 Acompanhe seu progresso
-              </Link>,
+              </Link>,*/
               <Link to="/roadrops"
               className={classes.dropdownLink}
               >
@@ -79,7 +77,7 @@ export default function HeaderLinks() {
           </ListItem>
         }
       </ListItem>
-      <ListItem className={classes.listItem}>
+      {/* <ListItem className={classes.listItem}>
         <Tooltip
           id="instagram-twitter"
           title="Follow us on twitter"
@@ -129,7 +127,7 @@ export default function HeaderLinks() {
             <i className={classes.socialIcons + " fab fa-instagram"} />
           </Button>
         </Tooltip>
-      </ListItem>
+      </ListItem> */}
     </List>
   );
 }

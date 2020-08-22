@@ -10,8 +10,6 @@ import Parallax from 'components/Parallax/Parallax.js';
 import React from 'react';
 
 import ProductSection from './Sections/ProductSection.js';
-import TeamSection from './Sections/TeamSection.js';
-import WorkSection from './Sections/WorkSection.js';
 
 // nodejs library that concatenates classes
 // @material-ui/core components
@@ -54,8 +52,8 @@ export default function LandingPage(props) {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <ProductSection />
-          <TeamSection />
-          <WorkSection />
+          {/* <TeamSection />
+          <WorkSection /> */}
         </div>
       </div>
       <Footer />

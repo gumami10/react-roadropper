@@ -3,7 +3,6 @@ import 'assets/scss/material-kit-react.scss?v=1.8.0';
 import { createBrowserHistory } from 'history';
 import LandingPage from 'pages/LandingPage/LandingPage.js';
 import LoginPage from 'pages/LoginPage/LoginPage.js';
-import ProfilePage from 'pages/ProfilePage/ProfilePage.js';
 import Detail from 'pages/Roadmap/Detail.js';
 import ListRoadmap from 'pages/Roadmap/ListRoadmap';
 import DetailRoadrop from 'pages/DetailRoadrop/DetailRoadrop';
@@ -22,7 +21,7 @@ const App = () => {
   return (
     <Router history={hist}>
       <Switch>
-        <Route path="/dash" component={ProfilePage} />
+        {/* <Route path="/dash" component={ProfilePage} /> */}
         <Route path="/login" component={LoginPage} />
         <Route path="/detail" component={Detail} />
         <Route path="/new" component={NewRoadmap} />
