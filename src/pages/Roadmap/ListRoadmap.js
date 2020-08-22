@@ -56,7 +56,7 @@ const ListRoadmap = () => {
                   <GridItem xs={12} md={10} key={roadrop.id}>
                     <div className={classes.roadrop}>
                       <div className="roadrop__header">
-                        <Link className={classes.link} to={`/roadmap/${roadrop.id}`}>
+                        <Link className={classes.link} to={`/roadrop/${roadrop.id}`}>
                           <h2>{roadrop.title}</h2>
                         </Link>
                         <span>

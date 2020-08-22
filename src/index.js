@@ -5,6 +5,7 @@ import LandingPage from 'pages/LandingPage/LandingPage.js';
 import LoginPage from 'pages/LoginPage/LoginPage.js';
 import Detail from 'pages/Roadmap/Detail.js';
 import ListRoadmap from 'pages/Roadmap/ListRoadmap';
+import DetailRoadrop from 'pages/DetailRoadrop/DetailRoadrop';
 import NewRoadmap from 'pages/Roadmap/NewRoadmap';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/detail" component={Detail} />
         <Route path="/new" component={NewRoadmap} />
         <Route path="/roadrops" component={ListRoadmap} />
+        <Route path="/roadrop/:id" component={DetailRoadrop} />
         <Route path="/" component={LandingPage} />
       </Switch>
     </Router>
