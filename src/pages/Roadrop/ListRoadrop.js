@@ -1,8 +1,8 @@
 import Icon from '@material-ui/core/Icon';
 import { makeStyles } from '@material-ui/core/styles';
-import CommentIcon from '@material-ui/icons/Comment';
-import Follow from '@material-ui/icons/EmojiPeople';
-import HonorIcon from '@material-ui/icons/Star';
+import CommentIcon from '@material-ui/icons/CommentOutlined';
+import HonorIcon from '@material-ui/icons/EmojiEventsOutlined';
+import Follow from '@material-ui/icons/FavoriteBorderOutlined';
 import styles from 'assets/jss/material-kit-react/views/listRoadrop';
 import classNames from 'classnames';
 import Footer from 'components/Footer/Footer.js';
@@ -43,54 +43,56 @@ const ListRoadrop = () => {
       />
       <Parallax small filter image={require('assets/img/profile-bg.jpg')} />
       <div className={classNames(classes.main, classes.mainRaised)}>
-          <div className={classes.container}>
-            <GridContainer justify="center">
-              <GridItem xs={12}>
-                <div className={classes.name}>
-                  <h3 className={classes.title}>Explore nossos Roadrops</h3>
-                </div>
-              </GridItem>
-                {roadropList.map(roadrop => (
-                  <GridItem xs={12} key={roadrop.id}>
-                    <div className={classes.roadrop}>
-                      <div className="roadrop__header">
-                        <Link className={classes.link} to={`/roadrop/${roadrop.id}`}>
-                          <h2>{roadrop.title}</h2>
-                        </Link>
+          <GridContainer xs={6} justify="center">
+            <GridItem xs={12}>
+              <div className={classes.name}>
+                <h3 className={classes.title}>Explore nossos Roadrops</h3>
+              </div>
+            </GridItem>
+              {roadropList.map(roadrop => (
+                <GridItem xs={12} key={roadrop.id}>
+                  <div className={classes.roadrop}>
+                    <div className="roadrop__header">
+                      <Link className={classes.link} to={`/roadrop/${roadrop.id}`}>
+                        <h2>{roadrop.title}</h2>
+
                         <span>
                           {roadrop.category} - {roadrop.target}
                         </span>
-                      </div>
-                      <div className="roadrop__main">
-                        <div className="roadrop__subject">{roadrop.subject}</div>
-                        <div className="roadrop__content" dangerouslySetInnerHTML={{ __html: roadrop.content }}></div>
-                        <div className="roadrop__creator">{roadrop.creator}</div>
-                      </div>
-                      <div className="roadrop__footer">
-                        <span className="roadrop__comment">
-                          <Icon>
-                            <CommentIcon />
-                          </Icon>
-                        </span>
+                      </Link>
 
-                        <div className="roadrop__honor">
-                          <Icon>
-                            <HonorIcon />
-                          </Icon>
-                          <span>{roadrop.honor}</span>
-                        </div>
-                        <span>Feito: {roadrop.updated_at}</span>
-                        <span>
-                          <Icon>
-                            <Follow />
-                          </Icon>
-                        </span>
-                      </div>
+                      <span>Feito: {roadrop.updated_at}</span>
                     </div>
-                  </GridItem>
-                ))}
-            </GridContainer>
-          </div>
+                    <div className="roadrop__main">
+                      <div className="roadrop__subject">
+                        <strong>TL;DR:{' '}</strong>
+                        {roadrop.subject}
+                      </div>
+                      <div className="roadrop__content" dangerouslySetInnerHTML={{ __html: roadrop.content }}></div>
+                    </div>
+                    <div className="roadrop__footer">
+                      <span className="roadrop__comment">
+                        <Icon>
+                          <CommentIcon />
+                        </Icon>
+                      </span>
+
+                      <div className="roadrop__honor">
+                        <Icon>
+                          <HonorIcon />
+                        </Icon>
+                        <span>{roadrop.honor}</span>
+                      </div>
+                      <span>
+                        <Icon>
+                          <Follow />
+                        </Icon>
+                      </span>
+                    </div>
+                  </div>
+                </GridItem>
+              ))}
+          </GridContainer>
       </div>
       <Footer />
     </div>

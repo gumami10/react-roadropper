@@ -1,8 +1,7 @@
-import { container, title } from 'assets/jss/material-kit-react.js';
+import { title } from 'assets/jss/material-kit-react.js';
 import imagesStyle from 'assets/jss/material-kit-react/imagesStyles.js';
 
 const listRoadropStyle = {
-  container,
   button_text: {
     color: '#ffffff'
   },
@@ -39,11 +38,14 @@ const listRoadropStyle = {
     zIndex: '3'
   },
   mainRaised: {
-    padding: '16px 0',
+    padding: '24px 0',
     background: '#f0f2f5',
     margin: '-60px 30px 0px',
     borderRadius: '6px',
-    boxShadow: '0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)'
+    boxShadow: '0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)',
+    minHeight: 'calc(100vh - 374px)',
+    display: 'flex',
+    justifyContent: 'center'
   },
   title: {
     ...title,
@@ -86,6 +88,7 @@ const listRoadropStyle = {
     padding: 16,
     background: '#fff',
     borderRadius: 4,
+    marginBottom: 24,
 
     '& .roadrop__header': {
       alignItems: 'start',
@@ -98,18 +101,16 @@ const listRoadropStyle = {
     },
     '& .roadrop__main': {
       margin: '10px 0',
-      padding: '0 90px'
     },
 
     '& .roadrop__footer': {
       display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      padding: '0 32px',
+      alignItems: 'baseline',
 
       '& .roadrop__honor': {
         display: 'flex',
         alignItems: 'center',
+        marginRight: 16,
 
         '& span:last-child': {
           fontSize: 18,
@@ -120,7 +121,7 @@ const listRoadropStyle = {
       '& .roadrop__comment': {
         display: 'flex',
         alignItems: 'center',
-        margin: '4.5px 0'
+        marginRight: 16
       }
     }
   }

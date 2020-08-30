@@ -20,7 +20,7 @@ export default function HeaderLinks() {
 
   const handleLogout = useCallback(() => {
     userService.logout().subscribe(() => history.push('/')).complete();
-  });
+  }, [history]);
 
   const classes = useStyles();
 
